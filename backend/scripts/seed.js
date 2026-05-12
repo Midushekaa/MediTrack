@@ -9,6 +9,7 @@ import RefillReminder from "../models/RefillReminder.js";
 import VoiceNote from "../models/VoiceNote.js";
 import Setting from "../models/Setting.js";
 import MissedDose from "../models/MissedDose.js";
+import bcrypt from "bcryptjs"; // <--- Import bcrypt
 
 dotenv.config();
 connectDB();
@@ -18,16 +19,21 @@ const seedData = async () => {
     console.log("🌱 Seeding data...");
 
     // ===== Admin =====
-    const newAdmin = { fullName: "MediTrack Admin", email: "meditrack.admin@gmail.com", password: "admin123" };
+    const adminPassword = await bcrypt.hash("admin123", 10); // hash password
+    const newAdmin = { fullName: "MediTrack Admin", email: "meditrack.admin@gmail.com", password: adminPassword };
     const existingAdmin = await Admin.findOne({ email: newAdmin.email });
     if (!existingAdmin) await Admin.create(newAdmin);
 
     // ===== User =====
+    const userPassword = await bcrypt.hash("mala2010", 10); // hash password
     const newUser = {
       fullName: "Mala",
       email: "mala@gmail.com",
-      password: "mala2010",
+      password: userPassword,
       language: "en",
+      theme: "light",
+      fontSize: "medium",
+      onboardingComplete: false,
       accessibility_setting: { fontSize: "medium", theme: "light", screenReader: false, contrast: "normal" }
     };
     let createdUser = await User.findOne({ email: newUser.email });
@@ -63,7 +69,7 @@ const seedData = async () => {
           user_id: createdUser._id,
           medication_name: createdMed.name,
           dose_amount: createdMed.dose,
-          scheduled_time: new Date(new Date().setHours(8)), // example: 8 AM
+          scheduled_time: new Date(new Date().setHours(8)),
           status: "missed",
           missed_reason: "User forgot",
           notification_sent: false
@@ -88,4 +94,3 @@ const seedData = async () => {
 };
 
 seedData();
-

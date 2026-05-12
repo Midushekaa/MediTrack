@@ -1,5 +1,11 @@
 {
+  "scripts": {
+    "mobile": "node scripts/mobile-all.js",
+    "expo": "npm start --prefix mobile"
+  },
   "dependencies": {
+    "address": "^2.0.3",
+    "qrcode-terminal": "^0.12.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.9.3",
     "swiper": "^12.0.2"

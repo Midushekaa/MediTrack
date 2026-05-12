@@ -1,20 +1,23 @@
 import mongoose from "mongoose";
 
-const { Schema } = mongoose;
+const reminderSchema = new mongoose.Schema(
+  {
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    medication_name: { type: String, required: true },
+    reminder_time: { type: String, required: true }, // HH:mm
+    reminder_date: { type: String, required: true }, // YYYY-MM-DD
+    reminder_type: { type: String, default: "push" },
+    voice_prompt: { type: String, default: "" }, // Custom AI voice message
 
-const ReminderSchema = new Schema({
-  medication_id: { type: mongoose.Schema.Types.ObjectId, ref: "Medication", required: true },
-  reminder_time: { type: String, required: true }, // "08:00"
-  reminder_type: { type: String, enum: ["push", "voice", "SMS"], default: "push" },
-  status: { type: String, enum: ["pending", "taken", "missed"], default: "pending" },
-  user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now }
-});
+    status: {
+      type: String,
+      enum: ["pending", "taken", "missed"],
+      default: "pending",
+    },
 
-ReminderSchema.pre("save", function(next) {
-  this.updated_at = Date.now();
-  next();
-});
+    takenTime: { type: Date, default: null },
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model("Reminder", ReminderSchema);
+export default mongoose.model("Reminder", reminderSchema);

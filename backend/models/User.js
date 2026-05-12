@@ -1,28 +1,41 @@
 import mongoose from "mongoose";
 
-const { Schema } = mongoose;
+const userSchema = new mongoose.Schema({
+  fullName: {
+    type: String,
+    required: true,
+  },
 
-// Accessibility Settings (embedded schema)
-const AccessibilitySchema = new Schema({
-  fontSize: { type: String, default: "medium" },
-  colorScheme: { type: String, default: "default" },
-  screenReader: { type: Boolean, default: false }
-}, { _id: false });
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 
-// User Schema
-const UserSchema = new Schema({
-  fullName: { type: String, required: true },
-  email: { type: String, unique: true, required: true, lowercase: true },
-  password: { type: String, required: true },
-  language: { type: String, default: "en" },
+  password: {
+    type: String,
+    required: true,
+  },
 
-  // Use embedded schema instead of raw Object
-  accessibility_setting: { 
-    type: AccessibilitySchema,
-    default: {}
-  }
-}, 
-{ timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
-);
+  profileImage: {
+    type: String,
+    default: "",
+  },
 
-export default mongoose.model("User", UserSchema);
+  emergencyContact: {
+    type: String,
+    default: "",
+  },
+
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+export default mongoose.model("User", userSchema);
