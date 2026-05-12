@@ -1,0 +1,134 @@
+.qr-view-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.qr-view-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.qr-view-header h1 {
+  font-size: 1.5rem;
+  color: #2d3436;
+  margin: 0;
+}
+
+.back-btn {
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.user-info-card {
+  background: white;
+  padding: 30px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.avatar-section {
+  margin-bottom: 15px;
+}
+
+.public-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #6c5ce7;
+}
+
+.public-avatar-placeholder {
+  font-size: 80px;
+  color: #dfe6e9;
+}
+
+.emergency-label {
+  color: #d63031;
+  font-weight: 600;
+  margin-top: 10px;
+  background: #fff5f5;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.medication-list-section {
+  background: white;
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.medication-list-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #2d3436;
+}
+
+.public-med-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #f1f2f6;
+}
+
+.public-med-item:last-child {
+  border-bottom: none;
+}
+
+.med-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.med-main strong {
+  font-size: 1.1rem;
+  color: #2d3436;
+}
+
+.med-main span {
+  font-size: 0.9rem;
+  color: #636e72;
+}
+
+.taken-icon {
+  color: #00b894;
+  font-size: 1.2rem;
+}
+
+.qr-view-footer {
+  text-align: center;
+  color: #636e72;
+  font-size: 0.8rem;
+  margin-top: auto;
+  padding-bottom: 10px;
+}
+
+.qr-view-loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #6c5ce7;
+}

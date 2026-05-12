@@ -1,0 +1,23 @@
+/* === Global Styles === */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", "Inter", sans-serif;
+  background-attachment: fixed;
+  color: var(--text-color);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Fade In Animation === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

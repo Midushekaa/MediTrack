@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Splash Screen */
+.splash-screen {
+  text-align: center;
+  color: white;
+}
+.splash-logo {
+  width: 120px;
+  height: 120px;
+}
+.splash-title {
+  font-size: 28px;
+  margin-top: 10px;
+}
+.splash-sub {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/* Auth Pages */
+.auth-page {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 320px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.logo-small {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.auth-page h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.switch-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.switch-text span {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.message {
+  color: green;
+  margin-top: 10px;
+}
+.splash-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.splash-btn {
+  background: white;
+  color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.splash-btn.signin:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.splash-btn.signup {
+  background-color: #007bff;
+  color: white;
+}
+
+.splash-btn.signup:hover {
+  background-color: #0056b3;
+}

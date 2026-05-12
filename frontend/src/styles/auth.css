@@ -1,0 +1,145 @@
+:root {
+  --primary-blue: #007bff;
+  --secondary-blue: #00c6ff;
+  --card-bg: #fff;
+  --label-color: #333;
+  --input-border: #ccc;
+  --input-focus: #2f80ed;
+  --button-hover: #1366d6;
+}
+
+/* Global Body */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+}
+
+/* Card Container */
+.mobile-container {
+  width: 100%;
+  max-width: 420px;
+  min-height: 80vh;
+  background-color: var(--card-bg);
+  border-radius: 25px;
+  box-shadow: 0 8px 35px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 50px 25px;
+  text-align: left;
+  overflow-y: auto;
+}
+
+/* Header */
+.auth-header {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* Input Groups */
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--label-color);
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 14px 15px;
+  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  font-size: 1rem;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  color: var(--label-color);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--input-focus);
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 14px 30px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--primary-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: var(--button-hover);
+}
+
+/* Switch Text */
+.switch-text {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: var(--label-color);
+  text-align: center;
+}
+
+.switch-text span {
+  color: var(--primary-blue);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.switch-text span:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .mobile-container {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 25px 15px;
+    min-height: auto;
+  }
+
+  .auth-header {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  input {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .submit-btn {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .switch-text {
+    font-size: 0.85rem;
+    margin-top: 15px;
+  }
+}

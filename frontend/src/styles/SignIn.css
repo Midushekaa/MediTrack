@@ -1,0 +1,238 @@
+/* === Scoped Reset === */
+.auth-wrapper, .auth-wrapper * {
+  box-sizing: border-box;
+}
+
+/* === Page Container === */
+.auth-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent; /* Background is handled by index.css */
+  padding: 20px;
+  z-index: 1000;
+}
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  box-shadow: 0 15px 40px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  font-family: "Poppins", "Inter", sans-serif;
+  animation: modalScaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  color: var(--text-color);
+}
+
+@keyframes modalScaleUp {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* === Header === */
+.auth-header {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.8;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* === Input Group === */
+.input-group {
+  width: 100%;
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-group input {
+  padding: 16px 18px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-color);
+}
+
+.input-group input:focus {
+  background-color: var(--bg-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px var(--shadow-color);
+}
+
+.input-group input.input-error {
+  border-color: #ff4d4f;
+  background-color: rgba(255, 77, 79, 0.1);
+}
+
+/* === Form === */
+.auth-page form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Links === */
+.forgot-password {
+  text-align: right;
+  margin-bottom: 25px;
+}
+
+.forgot-password span {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.forgot-password span:hover {
+  text-decoration: underline;
+}
+
+/* === Submit Button === */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px var(--shadow-color);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* === Switch Text === */
+.switch-text {
+  margin-top: 25px;
+  font-size: 15px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.switch-text span {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.switch-text span:hover {
+  text-decoration: underline;
+}
+
+/* ✅ Success/Error Toast (Floating) */
+.status-toast {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  min-width: 300px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: toastSlideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.status-toast.success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.status-toast.error {
+  background: linear-gradient(135deg, #ff4d4f, #ff7875);
+}
+
+@keyframes toastSlideDown {
+  from { transform: translate(-50%, -100px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* === Mobile Adjustments === */
+@media (max-width: 480px) {
+  .auth-wrapper {
+    background: #fff;
+    padding: 0;
+  }
+
+  .auth-page {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    padding: 30px 24px;
+    justify-content: center;
+    background: #fff;
+  }
+
+  .auth-header {
+    font-size: 24px;
+  }
+
+  .status-toast {
+    width: 90%;
+    top: 20px;
+    font-size: 14px;
+  }
+}

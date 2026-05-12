@@ -1,0 +1,226 @@
+/* === REFILL NOTIF WRAPPER === */
+.refill-notif-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(circle at 0% 100%, rgba(47, 128, 237, 0.05) 0%, transparent 50%),
+              linear-gradient(135deg, #f8fafc, #ffffff);
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: "Poppins", "Inter", sans-serif;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* === CONTAINER === */
+.refill-notif-container {
+  width: 90%;
+  max-width: 800px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.title-icon {
+  color: #2f80ed;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-left: 4px solid #2f80ed;
+}
+
+/* === ALERTS SECTION === */
+.alerts-section {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  width: 90%;
+}
+
+.alert-toast {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  color: #dc2626;
+  padding: 18px 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15);
+  animation: slideInRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.alert-icon {
+  font-size: 22px;
+}
+
+/* === REFILL GRID === */
+.refill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* === CARD === */
+.refill-card-modern {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #2f80ed;
+  opacity: 0.5;
+}
+
+.refill-card-modern:hover {
+  transform: translateY(-8px);
+  background: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.med-icon {
+  font-size: 20px;
+  padding: 10px;
+  background: rgba(47, 128, 237, 0.1);
+  border-radius: 12px;
+  color: #2f80ed;
+}
+
+.card-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.info-row svg {
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+.info-row strong {
+  color: #1e293b;
+}
+
+.refill-times-badge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.time-badge {
+  background: rgba(47, 128, 237, 0.08);
+  color: #2f80ed;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* === STATES === */
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(47, 128, 237, 0.1);
+  border-top-color: #2f80ed;
+  border-radius: 50%;
+  margin: 40px auto;
+  animation: spin 1s linear infinite;
+}
+
+/* === ANIMATIONS === */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* === MOBILE === */
+@media (max-width: 600px) {
+  .refill-notif-container {
+    width: 95%;
+  }
+  .refill-grid {
+    grid-template-columns: 1fr;
+  }
+}

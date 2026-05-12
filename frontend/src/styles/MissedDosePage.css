@@ -1,0 +1,360 @@
+/* === Missed Dose Page Styles === */
+.missed-dose-container {
+  width: 100%;
+  max-width: 550px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 30px 20px 100px;
+  /* Space for footer */
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.missed-dose-title {
+  text-align: left;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.5px;
+}
+
+.title-icon {
+  color: #ef4444;
+  font-size: 1.8rem;
+}
+
+/* === STATES === */
+.loading-state,
+.no-missed-doses {
+  background: #f8fafc;
+  padding: 80px 40px;
+  border-radius: 24px;
+  text-align: center;
+  color: #64748b;
+  border: 2px dashed #e2e8f0;
+  margin: 20px 0;
+}
+
+.success-icon {
+  font-size: 50px;
+  color: #10b981;
+  margin-bottom: 24px;
+}
+
+.spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid #f1f5f9;
+  border-top-color: #2f80ed;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin 0.8s linear infinite;
+}
+
+/* === LIST === */
+.missed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* === CARD === */
+.missed-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInUp 0.5s ease-out;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: #ef4444;
+}
+
+.missed-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  border-color: #2f80ed;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.med-icon {
+  font-size: 24px;
+  padding: 12px;
+  background: #fff1f2;
+  border-radius: 16px;
+  color: #e11d48;
+}
+
+.med-details h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.time-info {
+  font-size: 0.9rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* === STATUS BADGE === */
+.dose-status-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dose-status-badge.missed {
+  background: #fff1f2;
+  color: #e11d48;
+}
+
+.dose-status-badge.taken {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.dose-status-badge.pending {
+  background: #fefce8;
+  color: #ca8a04;
+}
+
+/* === ACTIONS === */
+.card-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.card-actions button {
+  flex: 1;
+  padding: 14px 10px;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.take-now-btn {
+  background: #2f80ed;
+  color: white;
+  box-shadow: 0 4px 12px rgba(47, 128, 237, 0.2);
+}
+
+.take-now-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.reschedule-btn {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.reschedule-btn:hover:not(:disabled) {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.ignore-btn {
+  background: #fff1f2;
+  color: #e11d48;
+}
+
+.ignore-btn:hover:not(:disabled) {
+  background: #ffe4e6;
+  transform: scale(1.02);
+}
+
+/* === RESCHEDULE PANEL === */
+.reschedule-panel {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: expandIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e2e8f0;
+}
+
+.reschedule-fields {
+  display: flex;
+  gap: 16px;
+}
+
+.rfield {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.rfield label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 4px;
+}
+
+.rfield input {
+  padding: 14px;
+  border-radius: 16px;
+  border: 2px solid #e2e8f0;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #1e293b;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.rfield input:focus {
+  border-color: #2f80ed;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(47, 128, 237, 0.1);
+}
+
+.confirm-reschedule-btn {
+  width: 100%;
+  padding: 16px;
+  background: #1e293b;
+  /* Replaced pure black with dark navy/slate */
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-reschedule-btn:hover:not(:disabled) {
+  background: #334155;
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* === ANIMATIONS === */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 480px) {
+  .missed-dose-container {
+    padding: 24px 16px 100px;
+    box-shadow: none;
+  }
+
+  .missed-dose-title {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+
+  .missed-card {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .med-details h3 {
+    font-size: 1.15rem;
+  }
+
+  .card-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card-actions button {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .reschedule-fields {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

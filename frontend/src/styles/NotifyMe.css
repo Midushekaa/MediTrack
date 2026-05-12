@@ -1,0 +1,294 @@
+/* === NOTIFY ME — FULL STYLESHEET === */
+
+/* ── Voice unlock banner ── */
+.voice-unlock-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  animation: bannerPulse 2s infinite;
+}
+@keyframes bannerPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.75; }
+}
+
+/* ── Voice status badge ── */
+.voice-status-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.voice-status-badge.active {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+.voice-status-badge.inactive {
+  background: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffcc80;
+}
+
+/* ── No alerts hint ── */
+.no-alerts-hint {
+  font-size: 0.82rem;
+  opacity: 0.55;
+  margin-top: 0.3rem;
+}
+
+/* ── Medication badge ── */
+.med-badge {
+  font-size: 0.7rem;
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 0.5rem;
+}
+.med-icon { color: #1976d2; }
+
+/* ── Voice prompt preview ── */
+.voice-prompt-preview {
+  font-style: italic;
+  color: #666;
+  font-size: 0.82rem;
+  margin-top: 0.2rem;
+}
+
+/* === WRAPPER === */
+.notify-me-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(47, 128, 237, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, #f8fafc, #ffffff);
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: "Poppins", "Inter", sans-serif;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* === ALERTS CONTAINER === */
+.alerts-container {
+  width: 95%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.alerts-header-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.alerts-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* === NO ALERTS === */
+.no-alerts {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  padding: 30px 20px;
+  border-radius: 20px;
+  text-align: center;
+  color: #64748b;
+  font-size: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* === ALERT CARD === */
+.alert-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slideInUp 0.6s ease-out;
+  overflow: hidden;
+}
+
+.alert-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #cbd5e1;
+  transition: all 0.3s ease;
+}
+
+.alert-card.pending::before { background: #f59e0b; }
+.alert-card.taken::before   { background: #2f80ed; }
+.alert-card.missed::before  { background: #ef4444; }
+
+.alert-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+}
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.alert-icon {
+  font-size: 18px;
+  padding: 8px;
+  background: rgba(47, 128, 237, 0.1);
+  border-radius: 10px;
+  color: #2f80ed;
+}
+
+.alert-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.alert-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #64748b;
+  padding: 6px 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.info-item svg {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.alert-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+
+.status-badge {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-badge.pending { color: #d97706; }
+.status-badge.taken   { color: #2f80ed; }
+.status-badge.missed  { color: #dc2626; }
+
+/* === ACTIONS === */
+.alert-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.alert-actions button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.taken-btn {
+  background: linear-gradient(135deg, #2f80ed, #1366d6);
+  color: white;
+  box-shadow: 0 4px 10px rgba(47, 128, 237, 0.15);
+}
+.taken-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(47, 128, 237, 0.25);
+}
+
+.skip-btn {
+  background: rgba(239, 68, 68, 0.05);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+.skip-btn:hover:not(:disabled) {
+  background: #ef4444;
+  color: white;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.15);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* === ANIMATIONS === */
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 600px) {
+  .notify-me-wrapper {
+    padding: 30px 15px;
+  }
+  .alert-info {
+    grid-template-columns: 1fr;
+  }
+  .alert-card {
+    padding: 20px;
+    border-radius: 24px;
+  }
+}
